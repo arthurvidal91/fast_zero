@@ -22,7 +22,8 @@ dev = [
     "ruff (>=0.15.16,<0.16.0)",
     "typos (>=1.47.2,<2.0.0)",
     "pytest (==7.4.4)",
-    "pytest-cov (==4.1.0)"
+    "pytest-cov (==4.1.0)",
+    "pytest-random-order (>=1.2.0,<2.0.0)"
 ]
 
 [tool.ruff]
