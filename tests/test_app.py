@@ -84,6 +84,27 @@ def test_update_Nonexistent_userId(client):
     )
 
     assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'User not found'}
+
+
+def test_get_existent_user(client):
+
+    response = client.get('/users/1')
+
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {
+        'username': 'ciclano',
+        'email': 'ciclano@gmail.com',
+        'id': 1,
+    }
+
+
+def test_get_Nonexistent_user(client):
+
+    response = client.get('/users/2')
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'User not found'}
 
 
 def test_delete_existent_user(client):
@@ -99,3 +120,4 @@ def test_delete_Nonexistent_user(client):
     response = client.delete('/users/2')
 
     assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'User not found'}
